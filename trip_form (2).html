@@ -72,34 +72,34 @@
 <body>
   <div class="form-container">
     <h2>Log New Trip</h2>
-    <form>
+    <form action="/add-trip" method="POST">
       <div class="form-group">
         <label for="date">Trip Date</label>
-        <input type="date" id="date" value="2025-10-04">
+        <input type="date" id="date" name="date" value="2025-10-04">
       </div>
       <div class="form-group">
         <label for="distance">Distance (km)</label>
-        <input type="number" id="distance" placeholder="0.0">
+       <input type="number" id="distance" name="distance">
       </div>
       <div class="form-group">
         <label for="fuel">Fuel Consumed (L)</label>
-        <input type="number" id="fuel" placeholder="0.0">
+        <input type="number" id="fuel" name="fuel" placeholder="0.0">
       </div>
       <div class="form-group">
         <label for="cost">Fuel Cost (₹)</label>
-        <input type="number" id="cost" placeholder="0.00">
+        <input type="number" id="cost" name="cost" placeholder="0.00">
       </div>
       <div class="form-group">
         <label for="start">Start Location</label>
-        <input type="text" id="start" placeholder="Starting point">
+        <input type="text" id="start" name="start" placeholder="Starting point">
       </div>
       <div class="form-group">
         <label for="end">End Location</label>
-        <input type="text" id="end" placeholder="Destination">
+        <input type="text" id="end" name="end" placeholder="Destination">
       </div>
       <div class="form-group">
         <label for="odometer">Odometer Reading (km)</label>
-        <input type="number" id="odometer" placeholder="Current odometer reading">
+        <input type="number" id="odometer" name="odometer" placeholder="Current odometer reading">
       </div>
       <div class="form-group">
         <label for="notes">Notes</label>
