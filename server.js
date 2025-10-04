@@ -1,13 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const Trip = require('./models/Trip');
 const path = require('path');
+const Trip = require('./models/Trip');
 
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/tripDB', {
+mongoose.connect('mongodb://localhost:27017/bikeTrackingDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => console.log('MongoDB connected'))
@@ -15,9 +15,9 @@ mongoose.connect('mongodb://localhost:27017/tripDB', {
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname)); // Serves your HTML files
 
-// Routes
+// Route to handle form submission
 app.post('/add-trip', async (req, res) => {
   try {
     const newTrip = new Trip(req.body);
@@ -30,4 +30,4 @@ app.post('/add-trip', async (req, res) => {
 
 // Start server
 const PORT = 3000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
