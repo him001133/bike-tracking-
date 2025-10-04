@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fuel Log Entry</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .fuel-log-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    .fuel-log-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: #555;
+    }
+    input[type="text"], input[type="number"], input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .cancel-btn {
+      background-color: #ccc;
+      color: #333;
+    }
+    .save-btn {
+      background-color: #0078D4;
+      color: white;
+    }
+    .fuel-quantity {
+      font-weight: bold;
+      color: #0078D4;
+      text-align: right;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="fuel-log-container">
+    <h2>Add Fuel Log</h2>
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input type="date" id="date" value="2025-10-04">
+    </div>
+    <div class="form-group">
+      <label for="odometer">Odometer Reading (km)</label>
+      <input type="number" id="odometer" placeholder="e.g. 12500">
+    </div>
+    <div class="form-group">
+      <label for="price">Price per Liter (₹)</label>
+      <input type="number" id="price" step="0.01" placeholder="e.g. 105.50">
+    </div>
+    <div class="form-group">
+      <label for="amount">Total Amount (₹)</label>
+      <input type="number" id="amount" step="0.01" placeholder="e.g. 1100">
+    </div>
+    <div class="fuel-quantity" id="fuelQuantity">Fuel Quantity: 0.00L</div>
+    <div class="buttons">
+      <button class="cancel-btn">Cancel</button>
+      <button class="save-btn" onclick="calculateFuel()">Save Fuel Log</button>
+    </div>
+  </div>
+
+  <script>
+    function calculateFuel() {
+      const price = parseFloat(document.getElementById('price').value);
+      const amount = parseFloat(document.getElementById('amount').value);
+      const quantity = (price > 0) ? (amount / price).toFixed(2) : '0.00';
+      document.getElementById('fuelQuantity').textContent = `Fuel Quantity: ${quantity}L`;
+    }
+  </script>
+</body>
+</html>
